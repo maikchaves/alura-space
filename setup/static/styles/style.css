@@ -382,3 +382,7 @@ table {
     border: 2px solid #7B78E5;
     cursor: pointer;
 }
+
+.text_search {
+    color: #D9D9D9
+}
