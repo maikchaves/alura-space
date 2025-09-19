@@ -26,6 +26,7 @@ class Photograph(models.Model):
     photo_path = models.ImageField(upload_to=photo_upload_to, blank=False)  # URL or path to the photo
     active = models.BooleanField(default=False)
     date_upload = models.DateField(default=datetime.now, blank=False)
+    user = models.ForeignKey('auth.User', on_delete=models.SET_NULL, null=True, blank=False, related_name='user')
     
     def __str__(self):
         return self.title

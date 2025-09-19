@@ -1,0 +1,12 @@
+{% if messages %}
+<div class="col-12">
+    {% for message in messages %}
+        <div id="messages" class="alert alert-{{ message.tags }} text-center alert-dismissible fade show" role="alert">
+        {{ message }}
+        {% if not forloop.last %}<br>{% endif %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {% endfor %}
+
+    </div>
+</div>
+{%endif %}
