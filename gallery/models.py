@@ -24,7 +24,7 @@ class Photograph(models.Model):
     category = models.CharField(max_length=100, choices=CATEGORY_OPTIONS, default='')
     description = models.TextField(null=True, blank=True)
     photo_path = models.ImageField(upload_to=photo_upload_to, blank=False)  # URL or path to the photo
-    active = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
     date_upload = models.DateField(default=datetime.now, blank=False)
     user = models.ForeignKey('auth.User', on_delete=models.SET_NULL, null=True, blank=False, related_name='user')
     
