@@ -2,9 +2,16 @@
 
 <section class="menu-lateral">
     <nav class="menu-lateral__navegacao">
-        <a href="{% url 'home' %}"><img src="{% static '/assets/ícones/1x/Home - ativo.png' %}"> Home</a>
-        <a href="#"><img src="{% static '/assets/ícones/1x/Mais vistas - inativo.png' %}"> Mais vistas</a>
-        <a href="#"><img src="{% static '/assets/ícones/1x/Novas - inativo.png' %}"> Novas</a>
-        <a href="#"><img src="{% static '/assets/ícones/1x/Surpreenda-me - inativo.png' %}"> Surpreenda-me</a>
+        {% for item in menu_items %}
+
+        <a href="{% if not item.disabled %}{% url item.url_name %}{% else %}#{% endif %}">
+
+            <img src="{% static '/assets/ícones/1x/' %}{{ item.icon }} {% if request.resolver_match.url_name == item.url_name %}- ativo{% else %}- inativo{% endif %}.png">
+
+            {{ item.label }}
+
+        </a>
+
+    {% endfor %}
     </nav>
 </section>

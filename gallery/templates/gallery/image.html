@@ -4,7 +4,6 @@
 
 {% block content %}
 
-
 <section class="conteudo">
     <section class="imagem">
         <div class="imagem__conteudo">
@@ -20,11 +19,32 @@
                     <p class="imagem__descricao">{{photo.subtitle}}</p>
                     <p class="imagem__texto">{{photo.description}}</p>
                 </div>
+                <div>
+                    <a href="{% url 'edit_image' photo.id %}"><button class="btn btn-success col-12" style="padding: top 5px;">Editar</button></a>
+                    <button class="btn btn-success col-12" style="padding: top 5px;"  data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">Deletar</button>
+                </div>
             </div>
         </div>
     </section>
 </section>
 
-
+<!-- Modal -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteConfirmationModalLabel">Excluir foto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Deseja excluir a foto {{ photo.title }}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <a href="{% url 'del_image' photo.id %}"><button type="button" class="btn btn-danger">Excluir</button></a>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
